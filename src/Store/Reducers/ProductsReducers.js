@@ -10,10 +10,14 @@ const initState = {
         {id: 8, name: 'Jogging Summer season', image: '8.jpg', price: 15, discount: 3, discountPrice: 15 - 2 / 100 * 15, quantity: 1, desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam iusto libero in dicta ex assumenda veniam hic qui officia aspernatur ea, aliquam minima eveniet, amet aperiam omnis voluptatibus saepe possimus.'},
         {id: 9, name: 'Jogging Summer season', image: '9.jpg', price: 15, discount: 3, discountPrice: 15 - 2 / 100 * 15, quantity: 1, desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam iusto libero in dicta ex assumenda veniam hic qui officia aspernatur ea, aliquam minima eveniet, amet aperiam omnis voluptatibus saepe possimus.'},
         {id: 10, name: 'Jogging Summer season', image: '10.jpg', price: 15, discount: 3, discountPrice: 15 - 2 / 100 * 15, quantity: 1, desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam iusto libero in dicta ex assumenda veniam hic qui officia aspernatur ea, aliquam minima eveniet, amet aperiam omnis voluptatibus saepe possimus.'}
-    ]
+    ],
+    product: {}
 }
 const ProductReducer = (state = initState, action) => {
+    console.log(typeof action.id);
     switch(action.type){
+        case "PRODUCT":
+            return {...state, product: state.products.find(product => product.id === parseInt(action.id))}
         default:
             return state;
     }
